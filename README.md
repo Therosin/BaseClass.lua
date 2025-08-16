@@ -25,8 +25,13 @@
 local Class = require("BaseClass")
 
 -- Root class
-local A = Class "A" { message = "A: Hello" }
-function A:new(name) self.name = name end
+local A = Class "A" {
+    message = "A: Hello",
+    new = function(self, name)
+        self.name = name or "World"
+    end
+}
+
 function A:say() print(self.message, self.name) end
 
 -- Subclass
